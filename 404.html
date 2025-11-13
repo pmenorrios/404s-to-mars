@@ -166,7 +166,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background: #000;
+        background: url("https://ik.imagekit.io/martin1/WhatsApp%20Image%202025-11-11%20at%2019.06.15.jpeg?updatedAt=1762885530175")
+          center/cover no-repeat;
         opacity: 0;
         pointer-events: none;
         transition: opacity 1s ease-in;
@@ -368,7 +369,7 @@
 
       // Create 5 planets in order: Sol, Venus, Jupiter, Urano, Tierra
       const planetTypes = ["sol", "venus", "jupiter", "urano", "tierra"];
-      const planetSizes = [200, 120, 180, 140, 130]; // Tamaños diferentes para cada planeta
+      const planetSizes = [200, 120, 180, 140, 130];
 
       for (let i = 0; i < 5; i++) {
         const planet = document.createElement("div");
@@ -409,7 +410,7 @@
 
       function updateSpaceScene() {
         objects.forEach((obj) => {
-          const z = obj.z + scrollProgress * obj.speed * 5; // Reducido de 10 a 5 para scroll más lento
+          const z = obj.z + scrollProgress * obj.speed * 2;
 
           if (z > 500) {
             obj.z = -5000;
@@ -427,8 +428,8 @@
           obj.element.style.opacity = opacity;
         });
 
-        // Check if journey is complete - ajustado para el scroll más lento
-        if (scrollProgress > 650) {
+        // Check if journey is complete
+        if (scrollProgress > 1600) {
           spaceContainer.style.opacity = "0";
           errorSection.classList.add("active");
           playAlarm();
@@ -454,8 +455,7 @@
 
       // Button handler
       ctaButton.addEventListener("click", () => {
-        window.location.href =
-          "https://www.sepe.es/HomeSepe/es/prestaciones-desempleo.html";
+        window.location.reload();
       });
     </script>
   </body>
