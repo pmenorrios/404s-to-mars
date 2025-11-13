@@ -93,23 +93,6 @@ for (let i = 0; i < 5; i++) {
   });
 }
 
-// Create asteroids
-for (let i = 0; i < 15; i++) {
-  const asteroid = document.createElement("div");
-  asteroid.className = "space-object asteroid";
-  asteroid.style.width = 20 + Math.random() * 40 + "px";
-  asteroid.style.height = asteroid.style.width;
-  spaceScene.appendChild(asteroid);
-
-  objects.push({
-    element: asteroid,
-    z: -500 - Math.random() * 4000,
-    x: (Math.random() - 0.5) * 1200,
-    y: (Math.random() - 0.5) * 800,
-    speed: 0.5 + Math.random() * 0.5,
-  });
-}
-
 let scrollProgress = 0;
 let scrolling = false;
 
@@ -133,15 +116,10 @@ function updateSpaceScene() {
     obj.element.style.opacity = opacity;
   });
 
-  // Check if journey is complete
-  if (scrollProgress > 1600) {
-    spaceContainer.style.opacity = "0";
-    errorSection.classList.add("active");
-    playAlarm();
-    setTimeout(() => {
-      ctaButton.classList.add("show");
-    }, 1000);
-  }
+  // Previously the error section was shown as a fixed overlay when the
+  // journey reached a certain scrollProgress. We no longer force an overlay
+  // here so the error section can appear naturally at the end of the page
+  // as part of the document flow.
 }
 
 window.addEventListener("scroll", () => {
@@ -158,7 +136,8 @@ window.addEventListener("scroll", () => {
 // Initial render
 updateSpaceScene();
 
-// Button handler
-ctaButton.addEventListener("click", () => {
-  window.location.reload();
+// Button handler: scroll smoothly to the top of the page (back to 'Earth')
+ctaButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });

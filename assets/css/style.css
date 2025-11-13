@@ -151,31 +151,38 @@ body {
 /* Scroll Progress */
 .scroll-content {
   position: relative;
-  height: 800vh;
+  height: 1500vh;
 }
 
 /* Error Section */
 .error-section {
-  position: fixed;
-  top: 0;
-  left: 0;
+  /* Make the error section part of the document flow so it appears at the end */
+  position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: url("https://ik.imagekit.io/martin1/WhatsApp%20Image%202025-11-11%20at%2019.06.15.jpeg?updatedAt=1762885530175")
     center/cover no-repeat;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1s ease-in;
-  z-index: 9999;
-}
-
-.error-section.active {
   opacity: 1;
   pointer-events: auto;
+  transition: opacity 0.8s ease-in, transform 0.6s ease;
+  z-index: 2;
+  padding: 4rem 1rem;
+}
+
+/* Optional classes kept for compatibility but not required for normal page flow */
+.error-section.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px);
+}
+
+.error-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .error-title {
@@ -227,7 +234,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: all 0.3s ease;
-  opacity: 0;
+  opacity: 1; /* Visible by default since the section is now in the flow */
 }
 
 button:hover {
@@ -235,10 +242,7 @@ button:hover {
   color: #000;
 }
 
-button.show {
-  animation: fadeIn 1s ease-in forwards;
-}
-
+/* Keep fadeIn keyframe for compatibility with any scripts that might use it */
 @keyframes fadeIn {
   to {
     opacity: 1;
