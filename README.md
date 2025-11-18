@@ -20,3 +20,15 @@ Launch Deadline:
 
 Reward:
 🏆 Each member of the winning 5-person crew will receive a Filmin streaming subscription.
+
+
+BACHELOR MULTIMEDIA AND GRAPHIC DESIGN
+
+404 SPACE TRAVEL
+
+Team members:
+- Martín
+- Luna
+- Carolina
+- Nicole
+- Paula
